@@ -1,247 +1,166 @@
-# Spotify Music Analytics Project
+<div align="center">
 
-This project is a full end-to-end analytics workflow built around Spotify track metadata. It follows the structure a senior analyst would use to turn raw data into business-ready insight: data validation, cleaning, exploratory analysis, SQL-based questions, and stakeholder-friendly outputs.
+# 🎧 Spotify Music Analytics
 
-## Project Objective
+### Turning 114,000 Spotify tracks into clear, data-driven insights
 
-The goal is to understand music consumption and performance patterns by analyzing a Spotify music dataset. The analysis focuses on:
+An end-to-end data analysis project using **Python, SQL, Excel, and Power BI** to explore track popularity, genres, artists, and audio features.
 
-- track popularity distribution
-- artist and genre performance
-- audio feature patterns (energy, danceability, valence, tempo, etc.)
-- explicit vs non-explicit content behavior
-- business questions that can drive recommendation and content strategy
+[Explore the repository](https://github.com/basireddyzughnesh-cmyk/Spotify_Data_Analysis) · [Open the Power BI dashboard](Power%20BI/SPOTIFY%20DASHBOARD.pbix)
 
-## Business Context
+</div>
 
-The dataset contains track-level music metadata including popularity scores, artist names, genres, and audio attributes. From a business perspective, the project answers questions such as:
+---
 
-- Which artists and genres are most represented?
-- Which genres have the strongest popularity?
-- What audio characteristics are associated with highly popular tracks?
-- How do explicit tracks differ from non-explicit tracks?
-- Which songs and genres are worth prioritizing for promotion, playlisting, or catalog decisions?
+## 📌 Project at a glance
 
-This is a classic analyst workflow: convert raw data into trustworthy insights that can inform product, content, and audience strategy.
+| | |
+|---|---|
+| **Goal** | Explore patterns in Spotify track metadata and communicate useful findings |
+| **Dataset** | 114,000 source rows and 20 fields |
+| **Tools** | Python (pandas, Matplotlib), SQLite, SQL, Excel, Power BI |
+| **Workflow** | Data checks → cleaning → exploration → SQL analysis → reporting |
 
-## Data Pipeline Overview
+## 💡 The questions behind the analysis
 
-The project follows a disciplined analytics pipeline:
+- Which genres and artists appear most often in this dataset?
+- How does track popularity vary across tracks and genres?
+- What do the audio features—such as energy, danceability, and valence—look like?
+- How many tracks are marked explicit?
+- How can these findings be summarized in charts and reports?
 
-1. Data audit and validation
-2. Data cleaning and standardization
-3. Exploratory data analysis
-4. KPI and insight generation
-5. SQLite database creation
-6. Business-query analysis
-7. Reporting and dashboard-ready outputs
+> **Important:** These are descriptive findings about this dataset. They do not prove that a particular audio feature causes popularity, or predict future listening trends.
 
-## Folder Structure
+## 📊 Snapshot of findings
 
-- `Data/` – raw source dataset
-- `Python/` – ETL, EDA, and reporting scripts
-- `SQL/` – database schema and business SQL queries
-- `Output/` – cleaned data, summary files, charts, and Excel outputs
-- `Power BI/` – Power BI dashboard file
+The current analysis reports:
 
-## Data Source
+| Finding | Result |
+|---|---:|
+| Tracks after duplicate removal | 113,550 |
+| Average popularity score | 33.32 / 100 |
+| Most represented genre | acoustic — 1,000 tracks |
+| Highest average genre popularity | pop-film — 59.28 |
+| Average energy | 0.642 |
+| Average danceability | 0.567 |
+| Tracks marked explicit | 9,718 (8.56%) |
 
-The original dataset is stored in:
+Popularity is the score included in the source data; these results describe the dataset as supplied and cleaned for this project.
 
-- `Data/spotify-tracks-dataset-detailed.csv`
+## 📈 Charts
 
-The project is built to evaluate the quality, consistency, and business meaning of the track-level data before producing analytical outputs.
+Charts are generated in `Output/Charts/`. A few examples:
 
-## How a Senior Analyst Would Approach This
+| Genre counts | Popularity distribution |
+|---|---|
+| ![Top Spotify genres by track count](Output/Charts/01_top_genres.png) | ![Distribution of track popularity](Output/Charts/02_popularity_distribution.png) |
 
-A strong analyst mindset for this project would look like this:
+| Energy and danceability | Valence and popularity |
+|---|---|
+| ![Energy compared with danceability](Output/Charts/05_energy_vs_danceability.png) | ![Valence compared with popularity](Output/Charts/06_valence_vs_popularity.png) |
 
-### 1) Define the analytical questions
-Before building visuals or reports, the first step is to define what success looks like:
+## 🧭 How the project works
 
-- Which tracks are strong performers?
-- Which genres are growing or more commercially attractive?
-- What features drive popularity?
-- What patterns help prioritize content investment?
+The numbered Python scripts are intended to run in order. Each step prepares outputs used by later steps.
 
-### 2) Validate the dataset before analysis
-The first Python script checks:
+| Step | Script | What it does |
+|---:|---|---|
+| 1 | `Python/01_data_check.py` | Checks the raw file’s size, columns, data types, missing values, and duplicates. |
+| 2 | `Python/02_data_cleaning.py` | Standardizes columns, removes duplicate rows, handles missing values, checks ranges, and saves a cleaned CSV. |
+| 3 | `Python/03_eda.py` | Creates charts showing distributions and relationships in the data. |
+| 4 | `Python/04_insights.py` | Writes a simple text summary of key measures. |
+| 5 | `Python/05_create_database.py` | Loads the cleaned data into a SQLite database and checks the imported records. |
+| 6 | `Python/06_run_business_queries.py` | Runs the business SQL queries and exports their results to an Excel workbook. |
 
-- row and column counts
-- missing values
-- duplicate records
-- data types
-- numerical ranges
+### The analyst's workflow
 
-This is critical because bad data creates misleading conclusions. In analytics, trust in the dataset is the foundation of every recommendation.
+1. **Start with questions.** Decide what needs to be understood before choosing charts or calculations.
+2. **Check data quality.** Inspect the raw file before relying on its contents.
+3. **Clean consistently.** Make data types, missing values, and duplicate handling explicit.
+4. **Explore before concluding.** Use summaries and charts to spot patterns worth investigating.
+5. **Use SQL for repeatable answers.** Keep business questions in query files that can be run again.
+6. **Communicate with context.** Share the result, explain what it measures, and avoid claiming causation from simple comparisons.
 
-### 3) Clean and normalize the dataset
-The cleaning script addresses:
+## 🗂️ Project structure
 
-- inconsistent column names
-- empty columns
-- duplicate rows
-- whitespace issues
-- missing values
-- invalid numeric values
-- feature engineering such as `duration_minutes` and `explicit_flag`
-
-This step ensures that the dataset is reliable and ready for downstream analysis.
-
-### 4) Explore patterns with visual analysis
-The EDA stage creates charts such as:
-
-- top genres by count
-- popularity distribution
-- energy distribution
-- danceability distribution
-- energy vs danceability relationship
-- valence vs popularity relationship
-- top artists by frequency
-
-These charts help analysts identify structure and relationships in the music catalog.
-
-### 5) Turn the data into business insight
-Instead of only reporting raw numbers, the project converts findings into concise business statements, including:
-
-- Total tracks analyzed
-- Average popularity
-- Most popular track
-- Most frequent artist
-- Most represented genre
-- Highest-performing genre by popularity
-- Average energy, danceability, valence, and tempo
-- Share of explicit tracks
-
-### 6) Store the results in SQL for business queries
-The database creation and SQL query stage adds repeatability. Analysts can interrogate the cleaned dataset using SQL to answer business questions repeatedly, without reprocessing raw files.
-
-### 7) Package outputs for stakeholders
-The project exports:
-
-- cleaned CSV
-- summary CSV
-- insight text report
-- generated charts
-- SQLite database
-- Excel workbook with business query results
-- Power BI dashboard
-
-This makes the work usable for both technical and non-technical stakeholders.
-
-## Main Scripts
-
-### 1. Data Check
-File: `Python/01_data_check.py`
-
-Purpose:
-- load the raw dataset
-- inspect structure, quality, and completeness
-- save a text-based validation report
-
-### 2. Data Cleaning
-File: `Python/02_data_cleaning.py`
-
-Purpose:
-- standardize dataset schema
-- remove duplicates and invalid rows
-- handle missing values
-- create additional derived fields
-- save cleaned output
-
-### 3. Exploratory Data Analysis
-File: `Python/03_eda.py`
-
-Purpose:
-- visualize key distributions and relationships
-- produce charts for analysis and presentation
-
-### 4. Insight Generation
-File: `Python/04_insights.py`
-
-Purpose:
-- summarize the dataset into KPI-style insights
-- write a business summary report
-
-### 5. Database Creation
-File: `Python/05_create_database.py`
-
-Purpose:
-- load the cleaned CSV into SQLite
-- create indexes for efficient SQL analysis
-- validate table integrity
-
-### 6. Business Queries Runner
-File: `Python/06_run_business_queries.py`
-
-Purpose:
-- execute SQL business questions
-- export results to Excel
-
-## SQL Files
-
-- `SQL/01_create_database.sql` – initializes the database table and indexes
-- `SQL/02_data_exploration.sql` – initial descriptive analytics
-- `SQL/03_business_queries.sql` – advanced business analysis queries
-
-## Output Files
-
-- `Output/spotify_cleaned.csv` – cleaned and standardized dataset
-- `Output/data_summary.csv` – high-level data quality summary
-- `Output/insights.txt` – KPI and insight narrative
-- `Output/genre_summary.csv` – genre-level popularity summary
-- `Output/Charts/` – visualization exports
-- `Output/SQL_Business_Results.xlsx` – SQL query results in Excel format
-- `SQL/spotify_analysis.db` – SQLite database used for analytics
-
-## Key Findings from the Current Analysis
-
-The project already reveals several meaningful patterns:
-
-- Total tracks analyzed: 113,550
-- Average track popularity: 33.32
-- Highest popularity track: Unholy (feat. Kim Petras)
-- Most frequent artist in the dataset: The Beatles (279 tracks)
-- Most represented genre: acoustic (1,000 tracks)
-- Best average popularity by genre: pop-film (59.28)
-- Average energy: 0.642
-- Average danceability: 0.567
-- Average valence: 0.474
-- Average tempo: 122.18 BPM
-- Explicit tracks: 8.56% of the catalog
-
-These findings are useful for understanding not only music trends but also how catalog characteristics influence listener appeal.
-
-## How to Run the Project
-
-From the project root, run the scripts in order:
-
-```bash
-python .\Python\01_data_check.py
-python .\Python\02_data_cleaning.py
-python .\Python\03_eda.py
-python .\Python\04_insights.py
-python .\Python\05_create_database.py
-python .\Python\06_run_business_queries.py
+```text
+Spotify_Data_Analysis/
+├── Data/       # Source CSV
+├── Python/     # Data checks, cleaning, charts, insights, and database scripts
+├── SQL/        # Database schema and analysis queries
+├── Output/     # Clean data, reports, charts, and Excel results
+└── Power BI/   # Interactive dashboard
 ```
 
-## Dependencies
+### Main deliverables
 
-This project uses Python libraries such as:
+- `Output/spotify_cleaned.csv` — dataset produced by the cleaning step
+- `Output/data_check.txt` — raw-data quality report
+- `Output/data_summary.csv` — compact cleaning summary
+- `Output/insights.txt` — text summary of selected measures
+- `Output/Charts/` — exported charts
+- `Output/SQL_Business_Results.xlsx` — query results, one worksheet per query
+- `SQL/spotify_analysis.db` — SQLite database created from the cleaned data
+- `Power BI/SPOTIFY DASHBOARD.pbix` — Power BI dashboard file
 
-- pandas
-- matplotlib
-- sqlite3 (built into Python)
-- openpyxl
+## 🚀 Run it yourself
 
-## Final Reflection
+### 1. Get the project
 
-This project demonstrates a strong end-to-end analytics workflow: the analyst identifies the business question, verifies data integrity, cleans data with discipline, explores the signal in the dataset, and delivers clear, decision-oriented findings. The result is not just raw technical output—it is a structured analytical story that can inform content strategy, audience understanding, and business decisions.
+```bash
+git clone https://github.com/basireddyzughnesh-cmyk/Spotify_Data_Analysis.git
+cd Spotify_Data_Analysis
+```
 
-## Dashboard
+### 2. Install Python dependencies
 
-The repository also includes a Power BI dashboard in:
+Use Python 3 and install the libraries used by the scripts:
 
-- `Power BI/SPOTIFY DASHBOARD.pbix`
+```bash
+python -m pip install pandas matplotlib openpyxl
+```
 
-This visual layer extends the analysis into a stakeholder-friendly summary format, suitable for presentation and decision-making.
+`sqlite3` is included with Python. Excel export also requires `openpyxl`.
+
+### 3. Run the analysis
+
+Run each command from the project root:
+
+```bash
+python Python/01_data_check.py
+python Python/02_data_cleaning.py
+python Python/03_eda.py
+python Python/04_insights.py
+python Python/05_create_database.py
+python Python/06_run_business_queries.py
+```
+
+The project uses paths relative to its own folders, so it does not require editing paths when cloned.
+
+## 🧰 SQL files
+
+- `SQL/01_create_database.sql` — table and index definitions
+- `SQL/02_data_exploration.sql` — descriptive checks and summaries
+- `SQL/03_business_queries.sql` — business-oriented analysis queries
+
+The Python database script creates and loads the SQLite table from the cleaned CSV. Run the Python pipeline above first to make sure the database and output files are up to date.
+
+## ⚠️ Notes and interpretation
+
+- Duplicate removal leaves **113,550 rows** from **114,000 source rows**.
+- The dataset has nearly 1,000 tracks for many genres. A genre’s average popularity should be interpreted alongside its track count.
+- Popularity is a dataset-provided measure and can change over time or depend on how the source was collected.
+- The average values and comparisons are descriptive; they should not be read as causal relationships.
+- The included Power BI file can be opened with Power BI Desktop. The Python workflow does not generate or refresh the `.pbix` file.
+
+## 🛠️ Tools
+
+`Python` · `pandas` · `Matplotlib` · `SQL` · `SQLite` · `Excel` · `Power BI`
+
+---
+
+<div align="center">
+
+**Built to demonstrate a practical analytics workflow—from raw data to stakeholder-ready reporting.**
+
+</div>
