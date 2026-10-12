@@ -245,3 +245,5 @@ The repository also includes a Power BI dashboard in:
 - `Power BI/SPOTIFY DASHBOARD.pbix`
 
 This visual layer extends the analysis into a stakeholder-friendly summary format, suitable for presentation and decision-making.
+#   S p o t i f y _ D a t a _ A n a l y s i s  
+ 
