@@ -1,0 +1,96 @@
+SPOTIFY DATASET CHECK REPORT
+============================================================
+
+Rows: 114000
+Columns: 20
+
+COLUMN NAMES
+----------------------------------------
+track_id
+artists
+album_name
+track_name
+popularity
+duration_ms
+explicit
+danceability
+energy
+key
+loudness
+mode
+speechiness
+acousticness
+instrumentalness
+liveness
+valence
+tempo
+time_signature
+track_genre
+
+DATA TYPES
+----------------------------------------
+track_id                str
+artists                 str
+album_name              str
+track_name              str
+popularity            int64
+duration_ms           int64
+explicit               bool
+danceability        float64
+energy              float64
+key                   int64
+loudness            float64
+mode                  int64
+speechiness         float64
+acousticness        float64
+instrumentalness    float64
+liveness            float64
+valence             float64
+tempo               float64
+time_signature        int64
+track_genre             str
+
+MISSING VALUES
+----------------------------------------
+track_id            0
+artists             1
+album_name          1
+track_name          1
+popularity          0
+duration_ms         0
+explicit            0
+danceability        0
+energy              0
+key                 0
+loudness            0
+mode                0
+speechiness         0
+acousticness        0
+instrumentalness    0
+liveness            0
+valence             0
+tempo               0
+time_signature      0
+track_genre         0
+
+DUPLICATES
+----------------------------------------
+450
+
+NUMERICAL SUMMARY
+----------------------------------------
+                     count           mean            std     min           25%            50%          75%          max
+popularity        114000.0      33.238535      22.305078   0.000      17.00000      35.000000      50.0000      100.000
+duration_ms       114000.0  228029.153114  107297.712645   0.000  174066.00000  212906.000000  261506.0000  5237295.000
+danceability      114000.0       0.566800       0.173542   0.000       0.45600       0.580000       0.6950        0.985
+energy            114000.0       0.641383       0.251529   0.000       0.47200       0.685000       0.8540        1.000
+key               114000.0       5.309140       3.559987   0.000       2.00000       5.000000       8.0000       11.000
+loudness          114000.0      -8.258960       5.029337 -49.531     -10.01300      -7.004000      -5.0030        4.532
+mode              114000.0       0.637553       0.480709   0.000       0.00000       1.000000       1.0000        1.000
+speechiness       114000.0       0.084652       0.105732   0.000       0.03590       0.048900       0.0845        0.965
+acousticness      114000.0       0.314910       0.332523   0.000       0.01690       0.169000       0.5980        0.996
+instrumentalness  114000.0       0.156050       0.309555   0.000       0.00000       0.000042       0.0490        1.000
+liveness          114000.0       0.213553       0.190378   0.000       0.09800       0.132000       0.2730        1.000
+valence           114000.0       0.474068       0.259261   0.000       0.26000       0.464000       0.6830        0.995
+tempo             114000.0     122.147837      29.978197   0.000      99.21875     122.017000     140.0710      243.372
+time_signature    114000.0       3.904035       0.432621   0.000       4.00000       4.000000       4.0000        5.000

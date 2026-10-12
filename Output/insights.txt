@@ -1,0 +1,14 @@
+SPOTIFY MUSIC & POPULARITY INTELLIGENCE
+============================================================
+
+1. Total tracks analyzed: 113,550
+2. Average track popularity: 33.32
+3. Highest popularity track: Unholy (feat. Kim Petras)
+4. Artist with the highest number of tracks: The Beatles (279 tracks)
+5. Most represented genre: acoustic (1,000 tracks)
+6. Genre with the highest average popularity: pop-film (59.28)
+7. Average energy: 0.642
+8. Average danceability: 0.567
+9. Average valence: 0.474
+10. Average tempo: 122.18 BPM
+11. Explicit tracks: 9,718 (8.56%)
